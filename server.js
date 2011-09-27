@@ -15,7 +15,7 @@ app.configure(function(){
   app.use(express.bodyParser());
   app.use(express.methodOverride());
   app.use(express.cookieParser());
-  app.use(express.session({ secret: 'your secret here' }));
+  //app.use(express.session({ secret: 'your secret here' }));
   app.use(express.compiler({ src: __dirname + '/public', enable: ['sass'] }));
   app.use(app.router);
   app.use(express.static(__dirname + '/public'));
@@ -34,6 +34,20 @@ app.configure('production', function(){
 app.get('/', function(req, res){
   res.render('index', {
     title: 'Express'
+  });
+});
+
+// Comic List - Alphabetical? Allow Sorting here via JS?
+app.get('/comics', function(req, res){
+  res.render('index', {
+    title: 'Comics'
+  });
+});
+
+// Search Page - Do we need a search result page as well?
+app.get('/search', function(req, res){
+  res.render('index', {
+    title: 'Search'
   });
 });
 
